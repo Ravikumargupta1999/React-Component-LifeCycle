@@ -7,10 +7,10 @@ class ComponentA extends React.Component {
 
         this.state = {
             name: "ComponentA",
-            data : []
+            data: []
         }
         console.log('ComponentA Constructor');
-        
+
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -25,22 +25,43 @@ class ComponentA extends React.Component {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(data => this.setState({
-                data :data
+                data: data
             }))
     }
     render() {
         // console.log('this.state.data',this.state.data);
         return (
             <>
-
                 <h2>{this.state.name}</h2>
-                 <ul>
-                     {this.state.data.map((d) =>{
-                        return (
-                            <li>{d.username}</li>
-                        )
-                     })}
-                 </ul>
+
+
+                <div>
+                    <h1>User Table</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Username</th>
+                                <th>Phone</th>
+                                <th>Website</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.data.map(user => (
+                                <tr key={user.id}>
+                                    <td>{user.id}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.username}</td>
+                                    <td>{user.phone}</td>
+                                    <td>{user.website}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </>
 
         )
