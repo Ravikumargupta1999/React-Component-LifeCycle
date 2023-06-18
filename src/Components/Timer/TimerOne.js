@@ -5,8 +5,9 @@ export default class TimerOne extends React.Component {
     super();
     console.log("TimerOne Constructor");
     this.state = {
-      count : 0
+      time: 0
     }
+    this.timer = null;
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -18,28 +19,27 @@ export default class TimerOne extends React.Component {
     return true;
   }
 
-  handleIncrease = () =>{
-    this.setState((prevState) =>{
-      return{
-        count : prevState.count + 1
-      }
-    })
-  }
 
-  render(){
+
+  render() {
     console.log('TimerOne Render');
-    return(
+    return (
       <>
-         <h1>C</h1>
-         <h2>{this.state.count}</h2>
-         <button onClick={this.handleIncrease}>Increase</button>
+        <h1>Time Spent : </h1>
+        {new Date(this.state.time * 1000).toISOString().slice(11,19)}
+
       </>
     )
   }
   componentDidMount() {
     console.log("TimerOne componentDidMount");
     console.log('______________________________')
-    
+
+    this.timer = setInterval(() => {
+      this.setState((prevState) => ({
+        time: prevState.time + 1
+      }))}, 1000);
+
   }
 
   getSnapshotBeforeUpdate(prevProp, prevState) {
@@ -51,5 +51,5 @@ export default class TimerOne extends React.Component {
     console.log("TimerOne componentDidUpdate");
   }
 
- 
+
 }
