@@ -16,7 +16,13 @@ export default class TimerOne extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return true;
+    // console.log('ddddddddd',nextProps);
+    // console.log('ddddddddddddd',nextState);
+
+
+
+    console.log('this.state.time',this.state.time);
+    return nextProps.timerOn != this.props.timerOn || nextState.time % 5 == 0;
   }
 
 
