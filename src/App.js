@@ -1,5 +1,5 @@
 import React from "react";
-import ComponentA from "./ComponentA";
+import TimerOne from "./Components/Timer/TimerOne";
 import "./index.css"
 
 class  App extends React.Component {
@@ -7,7 +7,7 @@ class  App extends React.Component {
   render(){
     return (
         <>
-        <ComponentA/>
+        <TimerOne/>
 
         </>
       );
