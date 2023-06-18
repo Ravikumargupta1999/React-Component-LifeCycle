@@ -25,8 +25,8 @@ export default class TimerOne extends React.Component {
     console.log('TimerOne Render');
     return (
       <>
-        <h1>Time Spent : </h1>
-        {new Date(this.state.time * 1000).toISOString().slice(11,19)}
+        <h1>Time Spent : {new Date(this.state.time * 1000).toISOString().slice(11,19)}</h1>
+        
 
       </>
     )
@@ -49,6 +49,12 @@ export default class TimerOne extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log("TimerOne componentDidUpdate");
+    console.log('________________________________');
+    console.log(this.state.time,typeof(this.state.time))
+
+    if(this.state.time == "10"){
+      clearInterval(this.time)
+    }
   }
 
 
